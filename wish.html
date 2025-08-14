@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday DIYA</title>
+<style>
+    body {
+        text-align: center;
+        background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+        color: rgb(220, 73, 5);
+    }
+    h1 {
+        font-size: 3em;
+        margin-top: 20px;
+        text-shadow: 2px 2px 5px #000;
+    }
+    .wish {
+        font-size: 1.5em;
+        margin: 20px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .visible {
+        opacity: 1;
+    }
+    .cake {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Birthday_cake_with_candles.jpg') no-repeat center/cover;
+        border-radius: 20px;
+    }
+    .cake-photo {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid white;
+    }
+    button {
+        background: #2ecacd;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        color: red;
+        animation: floatUp 3s linear forwards;
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+    /* Sparkle stars */
+    .star {
+        position: fixed;
+        color: yellow;
+        animation: sparkle 1.5s linear forwards;
+    }
+    @keyframes sparkle {
+        0% { transform: scale(0); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 1; }
+        100% { transform: scale(0); opacity: 0; }
+    }
+    /* Crackers */
+    .cracker {
+        position: fixed;
+        color: orange;
+        font-size: 20px;
+        animation: burst 1s ease-out forwards;
+    }
+    @keyframes burst {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(3); opacity: 0; }
+    }
+    /* Flowers */
+    .flower {
+        position: fixed;
+        color: pink;
+        font-size: 24px;
+        animation: bloom 2s ease-out forwards;
+    }
+    @keyframes bloom {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1.5); opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday Diya 🎂</h1>
+
+<div class="cake">
+    <img src="./assest/papa22.jpg" loading="lazy" alt="Diya" class="cake-photo">
+</div>
+
+<div id="wish" class="wish"></div>
+<button onclick="nextWish()">Love shower souls</button>
+
+<script>
+    const wishes = [
+        { name: "Yokesh (Dad)", text: "Happy Birthday my little princess! You are my pride and joy ❤️", effect: "hearts" },
+        { name: "Priyadharshini (Mom)", text: "My sweet angel, you are my whole world. Stay blessed always 💖", effect: "stars" },
+        { name: "Rajaram (Grandpa)", text: "Blessings from above, you are forever in my heart 💫", effect: "crackers" },
+        { name: "Kalyani (Grandma)", text: "You are my little mother my princess, always blooming with joy and gift from god 🌸", effect: "flowers" }
+    ];
+
+    let index = 0;
+    function nextWish() {
+        if (index >= wishes.length) index = 0;
+        const wishDiv = document.getElementById("wish");
+        wishDiv.innerHTML = `<b>${wishes[index].name}:</b> ${wishes[index].text}`;
+        wishDiv.classList.remove("visible");
+        setTimeout(() => wishDiv.classList.add("visible"), 100);
+
+        triggerEffect(wishes[index].effect);
+        index++;
+    }
+
+    function triggerEffect(effect) {
+        for (let i = 0; i < 10; i++) {
+            let elem = document.createElement("div");
+            elem.style.left = Math.random() * window.innerWidth + "px";
+            elem.style.top = (window.innerHeight - 50) + "px";
+
+            if (effect === "hearts") {
+                elem.innerHTML = "❤️";
+                elem.classList.add("heart");
+            } else if (effect === "stars") {
+                elem.innerHTML = "⭐";
+                elem.classList.add("star");
+            } else if (effect === "crackers") {
+                elem.innerHTML = "💥";
+                elem.classList.add("cracker");
+            } else if (effect === "flowers") {
+                elem.innerHTML = "🌸";
+                elem.classList.add("flower");
+            }
+
+            document.body.appendChild(elem);
+            setTimeout(() => elem.remove(), 3000);
+        }
+    }
+</script>
+
+</body>
+</html>
