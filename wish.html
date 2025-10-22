@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday DIYA</title>
+<title>Happy Birthday</title>
 <style>
     html, body {
         height: 100%;
@@ -115,64 +115,6 @@
     }
 </style>
 </head>
-<body>
-
-<div>
-    <h1>🎉 Happy Birthday Diya 🎂</h1>
-
-    <div class="cake">
-        <img src="./assest/papa22.jpg" loading="lazy" alt="Diya" class="cake-photo">
-    </div>
-
-    <div id="wish" class="wish"></div>
-    <button onclick="nextWish()">Love shower souls</button>
-</div>
-
-<script>
-    const wishes = [
-        { name: "Yokesh (Dad)", text: "Happy Birthday my little princess! You are my pride and joy ❤️", effect: "hearts" },
-        { name: "Priyadharshini (Mom)", text: "My sweet angel, you are my whole world. Stay blessed always 💖", effect: "stars" },
-        { name: "Rajaram (Grandpa)", text: "Blessings from above, you are forever in my heart 💫", effect: "crackers" },
-        { name: "Kalyani (Grandma)", text: "You are my little mother my princess, always blooming with joy and gift from god 🌸", effect: "flowers" }
-    ];
-
-    let index = 0;
-    function nextWish() {
-        if (index >= wishes.length) index = 0;
-        const wishDiv = document.getElementById("wish");
-        wishDiv.innerHTML = `<b>${wishes[index].name}:</b> ${wishes[index].text}`;
-        wishDiv.classList.remove("visible");
-        setTimeout(() => wishDiv.classList.add("visible"), 100);
-
-        triggerEffect(wishes[index].effect);
-        index++;
-    }
-
-    function triggerEffect(effect) {
-        for (let i = 0; i < 10; i++) {
-            let elem = document.createElement("div");
-            elem.style.left = Math.random() * window.innerWidth + "px";
-            elem.style.top = (window.innerHeight - 50) + "px";
-
-            if (effect === "hearts") {
-                elem.innerHTML = "❤️";
-                elem.classList.add("heart");
-            } else if (effect === "stars") {
-                elem.innerHTML = "⭐";
-                elem.classList.add("star");
-            } else if (effect === "crackers") {
-                elem.innerHTML = "💥";
-                elem.classList.add("cracker");
-            } else if (effect === "flowers") {
-                elem.innerHTML = "🌸";
-                elem.classList.add("flower");
-            }
-
-            document.body.appendChild(elem);
-            setTimeout(() => elem.remove(), 3000);
-        }
-    }
-</script>
-
+<body>    
 </body>
 </html>
